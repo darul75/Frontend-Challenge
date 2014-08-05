@@ -17,24 +17,29 @@ angular.module('fecApp')
     cache.put(ROOT_KEY, [
       {
         id: '1',
+        parent: '',
         label: 'Cleaning',
         children: [
           {
-            id: '1',
+            id: '1-1',
+            parent: '1',
             label: 'Cleaning Per Hour'
           },
           {
-            id: '2',
+            id: '1-2',
+            parent: '1',
             label: 'Ironing Per Hour'
           }
         ]
       },
       {
         id: '2',
+        parent: '',
         label: 'Handyman'
       },
       {
         id: '3',
+        parent: '',
         label: 'Health & Beauty'
       }
 
@@ -44,6 +49,19 @@ angular.module('fecApp')
     return {
       GetRootItems: function () {
         return cache.get(ROOT_KEY);
+      },
+      GetRootItemById: function (id) {
+        var o = cache.get(ROOT_KEY);
+
+        var find = undefined;
+        angular.forEach(o, function(item) {
+          if (item.id === id) {
+            find = item;
+          }
+        });
+        return find;
       }
+
+
     };
   }]);

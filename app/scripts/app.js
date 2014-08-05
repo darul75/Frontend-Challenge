@@ -14,21 +14,25 @@ angular
     'ngCookies',
     'ngResource',
     'ngRoute',
-    // 'ngSanitize',
+    'ngSanitize',
     'ngTouch'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $locationProvider) {
+
+    //$locationProvider.html5Mode(true);
+
     $routeProvider
       .when('/', {
-        // templateUrl: 'views/main.html',
         templateUrl: 'main.html',
         controller: 'MainCtrl'
       })
-      // .when('/about', {
-      //   templateUrl: 'views/about.html',
-      //   controller: 'AboutCtrl'
-      // })
+      .when('/item/:id', {
+        templateUrl: 'item.html',
+        controller: 'MainCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
+
+
   });
