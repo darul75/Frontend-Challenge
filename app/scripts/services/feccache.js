@@ -12,43 +12,60 @@ angular.module('fecApp')
 
     var cache = cacheFactory('super-cache');
 
+    var jobInfo = ['features', 'description', 'picture', 'helpers', 'location', 'time'];
+
     var ROOT_KEY = 'rootItems';
 
     cache.put(ROOT_KEY, [
       {
         id: '1',
-        parent: '',
-        label: 'Cleaning',
-        children: [
-          {
-            id: '1-1',
-            parent: '1',
-            label: 'Cleaning Per Hour'
-          },
-          {
-            id: '1-2',
-            parent: '1',
-            label: 'Ironing Per Hour'
+        parent: null,
+        label: 'Cleaning'
+      },
+      {
+        id: '1-1',
+        parent: '1',
+        label: 'Cleaning Per Hour',
+        job: {
+          order: [
+            'Clean my',
+            0,
+            1,
+            2,
+            4,
+            3
+          ],
+          features: [{id:0, value:'flat'}, {id:1, value:'house'}],
+          helpers: [{id:0, value:'I have cleaning products'}, {id:1, value: "I don't have cleaning products"}],
+          description: '',
+          location: {
+            lat: '',
+            lng: ''
           }
-        ]
+        }
+      },
+      {
+        id: '1-2',
+        parent: '1',
+        label: 'Ironing Per Hour'
       },
       {
         id: '2',
-        parent: '',
+        parent: null,
         label: 'Handyman'
       },
       {
         id: '3',
-        parent: '',
+        parent: null,
         label: 'Health & Beauty'
       }
-
     ]);
 
-    // Public API here
     return {
       GetRootItems: function () {
-        return cache.get(ROOT_KEY);
+        return cache.get(ROOT_KEY).filter(function(o) {
+          return o.parent === null;
+        });
       },
       GetRootItemById: function (id) {
         var o = cache.get(ROOT_KEY);
@@ -60,6 +77,17 @@ angular.module('fecApp')
           }
         });
         return find;
+      },
+      GetRootItemChildrenById: function (parentId) {
+        return cache.get(ROOT_KEY).filter(function(o) {
+          return o.parent === parentId;
+        });
+      },
+      GetJobItemInfo: function (job, num) {
+        return {
+          name: jobInfo[num],
+          content: job[jobInfo[num]]
+        };
       }
 
 

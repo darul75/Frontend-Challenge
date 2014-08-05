@@ -52,15 +52,27 @@
     <script type="text/ng-template" id="item.html">
 
       <div class="row marketing">
-        {{scope.rootItem}}
-        <div ng-repeat="item in rootItem.children">
-          <a ng-href="#/item/{{item.id}}"><h4 ng-bind="item.label"></h4></a>
+        <div ng-if='item.parent' ng-repeat="item in itemChildren">
+          <a ng-href="#/item/{{item.id}}/job"><h4 ng-bind="item.label"></h4></a>
           <p></p>
         </div>
       </div>
 
     </script>
 
+    <script type="text/ng-template" id="job.html">
+
+      <div class="row marketing">
+        <ul>
+          <li ng-repeat='info in itemJob.order'>
+            <span ng-if="renderInfo(itemJob, info) !== 'select'" ng-bind='renderInfo(itemJob, info)'></span>
+            <jobinfodetail ng-if="renderInfo(itemJob, info) === 'select'" content='{{getInfoContent(itemJob, info)}}'></jobinfodetail>
+          </li>
+        </ul>
+
+      </div>
+
+    </script>
 
     <!-- build:js(.) scripts/oldieshim.js -->
     <!--[if lt IE 9]>
@@ -89,6 +101,7 @@
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/services/feccache.js"></script>
+        <script src="scripts/directives/jobinfodetail.js"></script>
         <!-- endbuild -->
 </body>
 </html>

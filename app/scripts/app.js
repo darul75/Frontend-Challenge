@@ -30,6 +30,10 @@ angular
         templateUrl: 'item.html',
         controller: 'MainCtrl'
       })
+      .when('/item/:id/job', {
+        templateUrl: 'job.html',
+        controller: 'MainCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
