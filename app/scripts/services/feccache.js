@@ -85,6 +85,34 @@ angular.module('fecApp')
         label: 'Handyman'
       },
       {
+        id: '2-1',
+        parent: '2',
+        type: 'cleaning',
+        label: 'Handing Per Hour',
+        job: {
+          order: [
+            'I need a handyman to help',
+            0,
+            1,
+            2,
+            'at',
+            4,
+            'in',
+            ' TIME COMPONENT '
+          ],
+          features: [{id:0, value:'hang stuff'}, {id:1, value:'fit & fix'}, {id:2, value:'odd jobs'}],
+          description: '',
+          location: {
+            lat: '',
+            lng: ''
+          },
+          picture: {
+            set: false,
+            path: ''
+          }
+        }
+      },
+      {
         id: '3',
         parent: null,
         label: 'Health & Beauty'
