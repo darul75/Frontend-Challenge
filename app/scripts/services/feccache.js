@@ -25,6 +25,7 @@ angular.module('fecApp')
       {
         id: '1-1',
         parent: '1',
+        type: 'cleaning',
         label: 'Cleaning Per Hour',
         job: {
           order: [
@@ -32,7 +33,9 @@ angular.module('fecApp')
             0,
             1,
             2,
+            'at',
             4,
+            'in',
             3
           ],
           features: [{id:0, value:'flat'}, {id:1, value:'house'}],
@@ -41,13 +44,40 @@ angular.module('fecApp')
           location: {
             lat: '',
             lng: ''
+          },
+          picture: {
+            set: false,
+            path: ''
           }
         }
       },
       {
         id: '1-2',
         parent: '1',
-        label: 'Ironing Per Hour'
+        type: 'cleaning',
+        label: 'Ironing per hour',
+        job: {
+          order: [
+            'I need some ironing done at',
+            4,
+            'in',
+            'TIME COMPONENT TODO',
+            " it's mainly",
+            0,
+            1,
+            2
+          ],
+          features: [{id:0, value:'shirts'}, {id:1, value:'bedding'}, {id:2, value:'clothing'}],
+          description: '',
+          location: {
+            lat: '',
+            lng: ''
+          },
+          picture: {
+            set: false,
+            path: ''
+          }
+        }
       },
       {
         id: '2',

@@ -9,6 +9,7 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/ng-prettyjson/dist/ng-prettyjson.min.css">
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -23,18 +24,22 @@
     <!-- Add your site or application content here -->
     <div class="container">
       <div class="header">
+
+        <breadcrumb></breadcrumb>
+
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="#">Home</a></li>
-          <li><a ng-href="#/about">About</a></li>
-          <li><a ng-href="#">Contact</a></li>
+          <li>
+            <a href='/'>
+              <span class="glyphicon glyphicon-share-alt"></span>
+            </a>
+          </li>
         </ul>
-        <h3 class="text-muted">fec</h3>
       </div>
 
       <div ng-view=""></div>
 
       <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+        <p><span class="glyphicon glyphicon-heart"></span> from darul75</p>
       </div>
     </div>
 
@@ -42,7 +47,10 @@
 
       <div class="row marketing">
         <div ng-repeat="rootItem in rootItems">
-          <a ng-href="#/item/{{rootItem.id}}"><h4 ng-bind="rootItem.label"></h4></a>
+          <a ng-href="#/item/{{rootItem.id}}" style='position: relative;width: 100%;'>
+            <img src='images/cleaning.jpg' width='100%' height='200' />
+            <h4 ng-bind="rootItem.label" style='position: absolute;background: #000;top: 0px;'></h4>
+          </a>
           <p></p>
         </div>
       </div>
@@ -64,13 +72,13 @@
 
       <div class="row marketing">
         <ul>
-          <li ng-repeat='info in itemJob.order'>
-            <span ng-if="renderInfo(itemJob, info) !== 'select'" ng-bind='renderInfo(itemJob, info)'></span>
-            <jobinfodetail ng-if="renderInfo(itemJob, info) === 'select'" content='{{getInfoContent(itemJob, info)}}'></jobinfodetail>
+          <li ng-repeat='idx in item.job.order' class='content'>
+            <span ng-if="renderInfo(item.job, idx) !== 'select'" ng-bind='renderInfo(item.job, idx)' class='text'></span>
+            <jobinfodetail ng-if="renderInfo(item.job, idx) === 'select'" item="item" idx="{{idx}}"></jobinfodetail>
           </li>
         </ul>
-
       </div>
+      <pre pretty-json="json" style='margin-top:50px' />
 
     </script>
 
@@ -93,6 +101,7 @@
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/ng-prettyjson/dist/ng-prettyjson.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -102,6 +111,7 @@
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/services/feccache.js"></script>
         <script src="scripts/directives/jobinfodetail.js"></script>
+        <script src="scripts/directives/breadcrumb.js"></script>
         <!-- endbuild -->
 </body>
 </html>

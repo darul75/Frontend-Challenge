@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ngPrettyJson'
   ])
   .config(function ($routeProvider, $locationProvider) {
 
