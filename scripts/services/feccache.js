@@ -39,8 +39,8 @@ angular.module('fecApp')
             5,
             3
           ],
-          features: [{id:0, value:'flat'}, {id:1, value:'house'}],
-          helpers: [{id:0, value:'I have cleaning products'}, {id:1, value: "I don't have cleaning products"}],
+          features: [{id:0, value:'flat', selected:true}, {id:1, value:'house'}],
+          helpers: [{id:0, value:'I have cleaning products', selected:true}, {id:1, value: "I don't have cleaning products"}],
           description: '',
           location: {
             lat: '',
@@ -73,7 +73,7 @@ angular.module('fecApp')
             1,
             2
           ],
-          features: [{id:0, value:'shirts'}, {id:1, value:'bedding'}, {id:2, value:'clothing'}],
+          features: [{id:0, value:'shirts', selected:true}, {id:1, value:'bedding'}, {id:2, value:'clothing'}],
           description: '',
           location: {
             lat: '',
@@ -111,7 +111,7 @@ angular.module('fecApp')
             'in',
             5
           ],
-          features: [{id:0, value:'hang stuff'}, {id:1, value:'fit & fix'}, {id:2, value:'odd jobs'}],
+          features: [{id:0, value:'hang stuff', selected:true}, {id:1, value:'fit & fix'}, {id:2, value:'odd jobs'}],
           description: '',
           location: {
             lat: '',
