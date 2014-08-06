@@ -18,6 +18,11 @@ body {
 .header {
   height: 40px;
   background-color: #f76f6a;
+  -moz-box-shadow: 0px 1px 0px #928F8F;
+  -webkit-box-shadow: 0px 1px 0px #928F8F;
+  -o-box-shadow: 0px 1px 0px #928F8F;
+  box-shadow: 0px 1px 0px #928F8F;
+  filter: progid:DXImageTransform.Microsoft.Shadow(color='#928F8F', Direction=135, Strength=5);
 }
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
