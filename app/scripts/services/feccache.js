@@ -36,6 +36,7 @@ angular.module('fecApp')
             'at',
             4,
             'in',
+            5,
             3
           ],
           features: [{id:0, value:'flat'}, {id:1, value:'house'}],
@@ -43,7 +44,12 @@ angular.module('fecApp')
           description: '',
           location: {
             lat: '',
-            lng: ''
+            lng: '',
+            address: ''
+          },
+          time: {
+            unit: 'minutes', // TODO
+            value: ''
           },
           picture: {
             set: false,
@@ -61,7 +67,7 @@ angular.module('fecApp')
             'I need some ironing done at',
             4,
             'in',
-            'TIME COMPONENT TODO',
+            5,
             " it's mainly",
             0,
             1,
@@ -71,7 +77,12 @@ angular.module('fecApp')
           description: '',
           location: {
             lat: '',
-            lng: ''
+            lng: '',
+            address: ''
+          },
+          time: {
+            unit: 'minutes', // TODO
+            value: ''
           },
           picture: {
             set: false,
@@ -98,13 +109,18 @@ angular.module('fecApp')
             'at',
             4,
             'in',
-            ' TIME COMPONENT '
+            5
           ],
           features: [{id:0, value:'hang stuff'}, {id:1, value:'fit & fix'}, {id:2, value:'odd jobs'}],
           description: '',
           location: {
             lat: '',
-            lng: ''
+            lng: '',
+            address: ''
+          },
+          time: {
+            unit: 'minutes', // TODO
+            value: ''
           },
           picture: {
             set: false,

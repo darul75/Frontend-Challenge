@@ -14,7 +14,14 @@ angular.module('fecApp')
       template: "<div>\
         <button ng-if='select' ng-model='content' ng-click='toggle()' class='btn btn-default'>{{content.value}}</button>\
         <button type='button' ng-if='showCamera' ng-click='setPicture()' class='btn btn-default action'><div class='camera' ><span></span></div></button>\
-        <button type='button' ng-if='showLocation' ng-click='setLocation()' class='btn btn-default action'><div class='location'></div></button>\
+        <button type='button' ng-if='showLocation' ng-click='setLocation()' class='btn btn-default action'>\
+          <div class='location'></div>\
+          <div style='float: left;margin-left:5px'>{{jobInfo.content.address === '' && '' || jobInfo.content.address}}<div>\
+        </button>\
+        <button type='button' ng-if='showTime' ng-click='setTime()' class='btn btn-default action'>\
+          <div class='time'></div>\
+          <div style='float: left;margin-left:5px'>{{jobInfo.content.value === '' && 'no location' || jobInfo.content.value + ' minutes'}}<div>\
+        </button>\
         <input type='text' ng-if='showDescription' ng-model='item.job.description' ng-changed='TODO' class='form-control' placeholder='+ description'>\
         </div>\
       " ,
@@ -50,6 +57,7 @@ angular.module('fecApp')
 
           scope.jobInfo.content.lat = 51;
           scope.jobInfo.content.lng = 32;
+          scope.jobInfo.content.address = '42 london street avenue';
 
           scope.triggerChanges();
 
@@ -60,6 +68,15 @@ angular.module('fecApp')
 
           scope.jobInfo.content.set = true;
           // path...
+
+          scope.triggerChanges();
+
+        };
+
+        // location: TODO time component
+        scope.setTime = function() {
+
+          scope.jobInfo.content.value = 30;
 
           scope.triggerChanges();
 
@@ -89,6 +106,9 @@ angular.module('fecApp')
                 break;
               case 'description':
                 scope.showDescription = true;
+                break;
+              case 'time':
+                scope.showTime = true;
                 break;
               default:
               break;
